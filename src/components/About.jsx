@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaInstagram, FaLinkedin, FaGithub, FaEnvelope, FaFileAlt } from 'react-icons/fa';
 
 const About = () => {
   return (
@@ -7,29 +8,17 @@ const About = () => {
       <div className="about-content">
         <div>
           <p className="about-text">
-            Hello! I'm a passionate full-stack developer with a love for creating 
-            innovative digital solutions. My journey in software development started 
-            [X years ago], and since then, I've been dedicated to writing clean, 
-            efficient code and building applications that make a difference.
-          </p>
-          <p className="about-text">
-            I enjoy tackling complex problems and turning ideas into reality through 
-            code. Whether it's building responsive web applications, developing robust 
-            backend systems, or creating intuitive user interfaces, I approach each 
-            project with creativity and attention to detail.
-          </p>
-          <p className="about-text">
-            When I'm not coding, you can find me [your hobbies/interests], always 
-            eager to learn new technologies and improve my craft.
+            Hey there! {':>'} I'm Fiqi, who's all about making cool stuff happen with code. I love diving into projects, whether it's building a full-stack web app from scratch, making a machine learning model, or just writing a random script to automate my life. I'm a big believer that tech should be fun and solve real problems—and I get a kick out of turning complex ideas into simple, working solutions. When I'm not coding, you can probably find me brainstorming my next big project or just chilling with some good music. Hit me up if you want to chat about tech, projects, or anything in between!
           </p>
           
           <div className="contact-section">
             <h3 className="skills-title">Let's Connect</h3>
             <div className="contact-links">
-              <a href="mailto:your.email@example.com" className="contact-link">📧 Email</a>
-              <a href="https://linkedin.com/in/yourprofile" className="contact-link">💼 LinkedIn</a>
-              <a href="https://github.com/yourusername" className="contact-link">🔗 GitHub</a>
-              <a href="#" className="contact-link">📄 Resume</a>
+              <a href="mailto:fiqifirmansyah5535@gmail.com" className="contact-link"><FaEnvelope /></a>
+              <a href="https://www.linkedin.com/in/fiqifirmansyah" className="contact-link"><FaLinkedin /></a>
+              <a href="https://github.com/ZekeHyperByte" className="contact-link"><FaGithub /></a>
+              <a href="https://instagram.com/fiqifirmansyahz" className="contact-link"><FaInstagram /></a>
+              <a href="https://drive.google.com/file/d/1uatYIDFNAe9PbIP_gnRC8s44PRP2txRx/view?usp=sharing" className="contact-link"><FaFileAlt /></a>
             </div>
           </div>
         </div>
