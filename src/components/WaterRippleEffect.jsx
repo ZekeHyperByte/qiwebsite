@@ -2,6 +2,7 @@ import React, { useRef, useMemo, useEffect } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
 import { WebGLRenderTarget, ShaderMaterial, Vector2, PlaneGeometry, Scene, OrthographicCamera, TextureLoader, RepeatWrapping } from 'three';
+import bgImage from '/src/assets/images/seltronik1.png';
 
 const vertexShader = `
   varying vec2 vUv;
@@ -30,8 +31,8 @@ const bufferShader = `
     float p_up = texture2D(uTexture, vUv + vec2(0.0, texel.y)).x;
     float p_down = texture2D(uTexture, vUv - vec2(0.0, texel.y)).x;
 
-    pVel += (p_right + p_left + p_up + p_down - 4.0 * pressure) * 0.5;
-    pressure += pVel * 0.5;
+    pVel += (p_right + p_left + p_up + p_down - 4.0 * pressure) * 1.0;
+    pressure += pVel * 1.0;
 
     pVel *= 0.98;
     pressure *= 0.99;
@@ -42,6 +43,7 @@ const bufferShader = `
         pressure += (1.0 - dist / 20.0) * 0.1;
       }
     }
+
 
     gl_FragColor = vec4(pressure, pVel, 0.0, 1.0);
   }
@@ -79,8 +81,8 @@ const RipplePass = () => {
   }, [orthoCamera]);
 
   const [rt1, rt2] = useMemo(() => [
-    new WebGLRenderTarget(size.width, size.height),
-    new WebGLRenderTarget(size.width, size.height)
+    new WebGLRenderTarget(size.width, size.height, { type: THREE.FloatType }),
+    new WebGLRenderTarget(size.width, size.height, { type: THREE.FloatType })
   ], [size]);
 
   const rt = useRef({ read: rt1, write: rt2 });
@@ -106,7 +108,7 @@ const RipplePass = () => {
     fragmentShader: renderShader
   }), [rt2, size]);
 
-  const bgTexture = useLoader(TextureLoader, '/src/assets/images/seltronik1.png');
+  const bgTexture = useLoader(TextureLoader, bgImage);
   useEffect(() => {
     if (bgTexture) {
       bgTexture.wrapS = bgTexture.wrapT = RepeatWrapping;
